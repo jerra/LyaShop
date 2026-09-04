@@ -16,12 +16,14 @@
   --black: #191919;
   --gray: #e6e8e6;
   --border: #ced0ce;
+  --white: #fff;
 }
 
 body {
   margin: 0;
-  /* color: var(--black); */
+  color: var(--black);
   padding-bottom: 40px;
+  background-color: var(--white);
 }
 
 body.dark {
