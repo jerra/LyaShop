@@ -13,7 +13,7 @@ export default function NavBar() {
 return (
     <div className="navbar">
       <a className="logo">
-        SuperM
+        Lya e-Shop
       </a>
       <nav className="nav-wrapper">
         <button onClick={handleThemeSwitch} className="theme-switcher">
