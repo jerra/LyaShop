@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function NavBar() {
+export default function NavBar({cart}) {
   const [light, setLight] = useState(true);
   const theme = light === true ? 'light' : 'dark';
 
@@ -8,6 +8,8 @@ export default function NavBar() {
     setLight(!light);
     document.body.className = light === true ? 'dark' : 'light';
   } 
+
+  const totalItems = cart.reduce((total, current) => total + current.quantity, 0);
 
 
 return (
@@ -36,7 +38,7 @@ return (
           </li>
         </ul>
         <a className="btn btn-nav">
-          Cart (0)
+          Cart ({totalItems})
         </a>
       </nav>
     </div>

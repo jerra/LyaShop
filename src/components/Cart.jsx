@@ -1,32 +1,4 @@
-import {useState} from 'react';
-import products from '../data/data.jsx';
-
-export default function Cart() {
-  const [cart, setCart] = useState(products);
-
-  const handleAddProduct = (id) => {
-    setCart(cart.map(item => {
-      if(id === item.id) {
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-        }
-      }   
-      return item;
-    }));
-  }
-
-  const handleRemoveProduct = (id) => {    
-    setCart(cart.map(item => {
-      if(id === item.id) {
-        return {
-          ...item, 
-          quantity: item.quantity > 0 ? item.quantity - 1 : item.quantity 
-        }
-      }
-      return item;
-    }))
-  }
+export default function Cart({cart, onAddProduct, onRemoveProduct}) {
 
   return (
     <div className="cart-wrapper">
@@ -39,8 +11,8 @@ export default function Cart() {
             <p className="cart-item-price">${product.price}</p>
             <div className="cart-buttons">
               <div>{product.quantity}</div>
-              <button onClick={() => {handleAddProduct(product.id)}} className="cart-item-add">Add</button>
-              <button onClick={() => {handleRemoveProduct(product.id)}} className="cart-item-remove">Remove</button>
+              <button onClick={() => {onAddProduct(product.id)}} className="cart-item-add">Add</button>
+              <button onClick={() => {onRemoveProduct(product.id)}} className="cart-item-remove">Remove</button>
             </div>
             <div className="cart-item-total">
               ${(product.price / 100).toFixed(2)}
