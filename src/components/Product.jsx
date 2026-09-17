@@ -1,17 +1,16 @@
 import Price from './Price.jsx';
 
-export default function Product(props) {
-  const {name, image, desc} = props;
+export default function Product({details}) {
+  //const {name, image, desc, price} = props;
 
   return (
     <div className="product">
-      <img className="product-img" src={image} alt="Vite logo" />
-      <h3 className="product-name">{name}</h3>
-      <p className="product-desc">{desc}</p>
+      <img className="product-img" src={details.thumbnail} alt={details.name} />
+      <h3 className="product-name">{details.name}</h3>
+      <p className="product-desc">Description</p>
       <div className="product-price">
-        <Price value={500} currency="$" showDecimals={true} />
+        <Price value={details.original_price} currency="$" showDecimals={true} />
       </div>
     </div>
   );
-
 }
